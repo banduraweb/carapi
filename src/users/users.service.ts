@@ -19,7 +19,7 @@ export class UsersService {
     return await this.userRepository.save(newUser);
   }
   async findOne(id: number) {
-    if(!id){
+    if (!id) {
       return null;
     }
     const user = await this.userRepository.findOne(id);
