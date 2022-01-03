@@ -5,7 +5,11 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
+  OneToMany,
+  TableForeignKey,
+  JoinColumn,
 } from 'typeorm';
+import { Report } from '../reports/report.entity';
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
@@ -14,6 +18,9 @@ export class User {
   email: string;
   @Column()
   password: string;
+  @OneToMany(() => Report, (report) => report.user)
+  // @JoinColumn()
+  reports: Report[];
   @AfterInsert()
   logInsert() {
     console.log('Insert new user', this.id);
