@@ -18,7 +18,12 @@ export class User {
   email: string;
   @Column()
   password: string;
+
+  @Column({ default: true })
+  admin: boolean;
+  // @Column()
   @OneToMany(() => Report, (report) => report.user)
+  // @JoinColumn({ name: 'idProfile' })
   // @JoinColumn()
   reports: Report[];
   @AfterInsert()
